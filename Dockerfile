@@ -4,6 +4,7 @@ EXPOSE 8080 8946
 RUN mkdir -p /app
 WORKDIR /app
 ENV GO111MODULE=on
+ENV GODEBUG=netdns=go
 # Leverage build cache by copying go.mod and go.sum first
 COPY go.mod go.sum ./
 RUN go mod download
@@ -12,4 +13,4 @@ RUN go mod download
 # Copy the rest of the source code
 COPY . .
 RUN go install ./...
-CMD ["dkron"]
+CMD ["dkron", "agent", "--server", "--log-level=debug", "--bootstrap-expect=1"]
