@@ -13,4 +13,4 @@ RUN go mod download
 # Copy the rest of the source code
 COPY . .
 RUN go install ./...
-CMD ["dkron", "agent", "--server", "--log-level=info"]
+CMD ["dkron", "agent", "--server", "--log-level=info", "--http-addr=:${PORT:-8080}"]
