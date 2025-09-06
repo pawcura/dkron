@@ -13,4 +13,4 @@ RUN go mod download
 # Copy the rest of the source code
 COPY . .
 RUN go install ./...
-CMD ["dkron", "agent", "--server", "--log-level=info", "--bootstrap-expect=3", "--retry-join=dkron-1", "--retry-join=dkron-2", "--retry-join=dkron-3"]
+CMD ["dkron", "agent", "--server", "--log-level=info"]
